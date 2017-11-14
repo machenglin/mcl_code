@@ -61,7 +61,7 @@ public class Observable {
      *
      * @param arg
      */
-    private void notifyObservers(Object arg) {
+    public void notifyObservers(Object arg) {
         // 一个临时数组，用于并发访问被观察者时，留住观察者列表的当前状态，【备忘录模式】
         Object[] arrLocal;
         synchronized (this) {
@@ -80,14 +80,14 @@ public class Observable {
     /**
      * 标识被观察者没有被改变
      */
-    private synchronized void clearChanged() {
+    public synchronized void clearChanged() {
         changed = false;
     }
 
     /**
      * 标识被观察者被改变
      */
-    protected synchronized void setChanged() {
+    public synchronized void setChanged() {
         changed = true;
     }
 
