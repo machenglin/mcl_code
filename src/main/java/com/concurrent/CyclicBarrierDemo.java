@@ -4,7 +4,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
- * 允许一组线程互相等待，直到到达某个公告屏障点。
+ * 允许一组线程互相等待，直到到达某个屏障点。
  * Created by Mcl on 2017/11/10.
  */
 public class CyclicBarrierDemo {
