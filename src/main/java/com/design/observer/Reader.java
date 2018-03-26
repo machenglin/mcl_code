@@ -1,24 +1,19 @@
 package com.design.observer;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * 观察者类：读者类
  * Created by Mcl on 2017/11/13.
  */
+@Getter
+@Setter
+@AllArgsConstructor
 public class Reader implements Observer {
     private String name;
-
-    public Reader(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /**
      * 关注一个作者

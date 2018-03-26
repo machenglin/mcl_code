@@ -1,5 +1,6 @@
 package com.jdk8;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.junit.Test;
@@ -31,27 +32,14 @@ public class StreamAPIDemo {
         System.out.println(sum);
 
     }
-
+    @Getter
+    @Setter
+    @AllArgsConstructor
     public static class Employee {
-        @Getter
-        @Setter
         private long id;
-        @Getter
-        @Setter
         private String name;
-        @Getter
-        @Setter
         private int age;
-        @Getter
-        @Setter
         private double salary;
-
-        public Employee(long id, String name, int age, double salary) {
-            this.id = id;
-            this.name = name;
-            this.age = age;
-            this.salary = salary;
-        }
     }
 }
 

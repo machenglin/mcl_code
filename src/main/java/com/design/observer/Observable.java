@@ -3,7 +3,7 @@ package com.design.observer;
 import java.util.Vector;
 
 /**
- * 背被观察者类：作者类
+ * 被观察者类：作者类
  * Created by Mcl on 2017/11/13.
  */
 public class Observable {
