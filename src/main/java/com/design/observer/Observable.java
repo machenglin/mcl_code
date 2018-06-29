@@ -19,7 +19,7 @@ public class Observable {
     private Vector<Observer> obs;
 
     public Observable() {
-        obs = new Vector<Observer>();
+        obs = new Vector<>();
     }
 
     /**
