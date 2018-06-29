@@ -19,9 +19,9 @@ public class DataSource {
         }
     }
 
-    private DataSource(){
-        if(connectionLinkedList == null || connectionLinkedList.size() == 0){
-            for(int i= 0;i < 10 ;i++){
+    private DataSource() {
+        if (connectionLinkedList == null || connectionLinkedList.size() == 0) {
+            for (int i = 0; i < 10; i++) {
                 try {
                     connectionLinkedList.add(createNewConnection());
                 } catch (SQLException e) {
@@ -32,25 +32,25 @@ public class DataSource {
     }
 
     private static Connection createNewConnection() throws SQLException {
-        return DriverManager.getConnection("url","username", "password");
+        return DriverManager.getConnection("url", "username", "password");
     }
 
-    public static Connection getConnection(){
-        if(connectionLinkedList.size()>0){
+    public static Connection getConnection() {
+        if (connectionLinkedList.size() > 0) {
             return new ConnectionProxy(connectionLinkedList.remove());
         }
         return null;
     }
 
-    public void recoveryConnection(Connection connection){
+    public void recoveryConnection(Connection connection) {
         connectionLinkedList.add(connection);
     }
 
-    private static class DataSourceInstance{
+    private static class DataSourceInstance {
         private static DataSource dataSource = new DataSource();
     }
 
-    public static DataSource getInstance(){
+    public static DataSource getInstance() {
         return DataSourceInstance.dataSource;
     }
 }
