@@ -11,8 +11,19 @@ public class ArrayLeetCode {
     public static void main(String[] args) {
         //rotate2(new int[]{-1},2);
         //System.out.println(singleNumber(new int[]{4,1,2,1,2}));
-        ArrayUtils.printArr(plusOne(new int[]{9}));
-
+        //ArrayUtils.printArr(plusOne(new int[]{9}));
+        char[][] arr = {
+        {'.','.','.','.','.','.','.','1','.'},
+        {'.','.','.','.','.','.','.','.','.'},
+        {'.','9','.','.','.','.','.','.','1'},
+        {'8','.','.','.','.','.','.','.','.'},
+        {'.','2','9','3','5','7','.','.','.'},
+        {'.','.','.','.','.','.','.','4','.'},
+        {'.','.','.','8','.','.','.','.','.'},
+        {'.','1','.','.','.','.','4','.','9'},
+        {'.','.','.','5','.','4','.','.','.'}};
+        //System.out.println(arr);
+        System.out.println(isValidSudoku(arr));
     }
     public  static  void rotate(int[] nums, int k) {
         for(int i = 1; i<=k;i++){
@@ -72,4 +83,64 @@ public class ArrayLeetCode {
         }
         return digits;
     }
+
+    /**
+     * 对9*9的数组进行数独的验证.
+     *
+     * @param board
+     * @return
+     */
+    public static boolean isValidSudoku(char[][] board) {
+        for(int i=0;i<9;i++){
+            int[] init = {0,0,0,0,0,0,0,0,0};
+            for(int j =0;j<9;j++){
+                int index = board[i][j]-49;
+                if(index>8 || index<0) continue;
+                if(init[index] == 0){
+                    init[index] = 1;
+                }else{
+                    return false;
+                }
+            }
+        }
+        for(int i=0;i<9;i++){
+            int[] init = {0,0,0,0,0,0,0,0,0};
+            for(int j =0;j<9;j++){
+                int index = board[j][i]-49;
+                if(index>8 || index<0) continue;
+                if(init[index] == 0){
+                    init[index] = 1;
+                }else{
+                    return false;
+                }
+            }
+        }
+
+        for(int i=0;i<9;i+=3){
+            for(int j=0;j<9;j+=3){
+                if(!check3X3(board, i ,j)){
+                    return false;
+                }
+            }
+        }
+        return true;
+
+    }
+
+    private static boolean check3X3(char[][] board, int beigini, int beiginj){
+        int[] init = {0,0,0,0,0,0,0,0,0};
+        for(int i=beigini;i<beigini+3;i++){
+            for(int j= beiginj;j<beiginj+3;j++){
+                int index = board[i][j]-49;
+                if(index>8 || index<0) continue;
+                if(init[index] == 0){
+                    init[index] = 1;
+                }else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }
